@@ -1,0 +1,55 @@
+.page {
+    font-family: sans-serif;
+    padding: 24px;
+  }
+  
+  hr {
+    margin-block: 32px;
+  }
+  
+  .layout {
+    display: flex;
+    gap: 24px;
+    flex-flow: row wrap;
+  }
+  
+  .layout > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    min-inline-size: 300px;
+    min-block-size: 100px;
+    box-shadow: 0 0 8px grey;
+  }
+  
+  .layout > div:hover {
+    box-shadow: 0 0 16px grey;
+    transition-duration: 0.2s;
+  }
+  
+  /* Styles above here aren't super relevant to containers */
+  
+  .card {
+    container: card / inline-size;
+  }
+  
+  .card div {
+    display: block;
+    inline-size: 100%;
+    border-radius: inherit;
+    text-align: center;
+  }
+  
+  @container card (min-width: 400px) {
+    /* Note that containers cannot style themselves, so an additional wrapper element is needed. */
+    div {
+      background-color: salmon;
+    }
+    
+    h2 {
+      font-size: 3rem;
+    }
+  }
+  

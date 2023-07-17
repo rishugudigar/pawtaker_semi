@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawTakers</title>
+    {% comment %} <link rel="stylesheet" href="style.css"> {% endcomment %}
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'vendors/mdi/css/materialdesignicons.min.css' %}">
+	<link rel="stylesheet" href="{% static 'vendors/owl.carousel/css/owl.carousel.css' %}">
+	<link rel="stylesheet" href="{% static 'vendors/owl.carousel/css/owl.theme.default.min.css' %}">
+	<link rel="stylesheet" href="{% static 'vendors/aos/css/aos.css' %}">
+	<link rel="stylesheet" href="{% static 'vendors/jquery-flipster/css/jquery.flipster.css' %}">
+    <link rel="shortcut icon" href="images/favicon.png" />
+    
+    <style>
+        /* Navigation Bar */
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        .nav-bar {
+            width: 100%;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding-top: 20px;
+            padding-left: 10%;
+            padding-right: 10%;
+            background-color: rgba(0, 0, 0, 0.8);
+            height: 8vh;
+        }
+
+        .navbar ul li {
+            list-style-type: none;
+            display: inline-block;
+            padding: 10px 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            font-weight: 500;
+            color: yellow;
+            font-family: 'Roboto', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+        }
+
+        .navbar ul li a:hover {
+            color: white;
+            transition: .4s;
+            font-size: medium;
+            font-weight: 500;
+        }
+
+        /* Navigation Bar ends here */
+
+        /* Body */
+        .col-text {
+            height: 100vh;
+        }
+
+        .grid-flex {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 1;
+            -webkit-flex-grow: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            flex-direction: row;
+            -webkit-flex-direction: row;
+            -webkit-flex-wrap: wrap;
+            -webkit-justify-content: space-around;
+        }
+
+        .col {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+        }
+
+        .col-left {
+            -webkit-box-ordinal-group: -1;
+            -webkit-order: -1;
+            -ms-flex-order: -1;
+            order: -1;
+        }
+
+        .col-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .Aligner-item {
+            width: 60%;
+        }
+
+        .col-image {
+            background-size: cover;
+            background-position: center center;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffcd39;
+            color: black;
+            border: none;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            transition-duration: 0.4s;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .btn:hover {
+            background-color: #ffc000;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 40px 0;
+            font-size: 14px;
+        }
+
+        .footer-col {
+            width: 25%;
+            padding: 0 15px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            color: #ffcd39;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffcd39;
+            transition: 0.3s;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive */
+        @media only screen and (max-width: 700px) {
+            .navbar ul li a {
+                font-size: 10px;
+            }
+        }
+
+        @media only screen and (max-width: 650px) {
+            .col-left {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .col-text {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .Aligner-item {
+                width: 100%;
+            }
+
+            .col-image {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <nav class="navbar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Body -->
+    <div class="grid-flex">
+        <div class="col col-image col-left" style="background-image: url('image1.jpg');"></div>
+        <div class="col col-text">
+            <div class="Aligner-item">
+                <h1>Welcome to PawTakers</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-flex">
+        <div class="col col-text">
+            <div class="Aligner-item">
+                <h2>Our Services</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="#" class="btn">View Services</a>
+            </div>
+        </div>
+        <div class="col col-image" style="background-image: url('image2.jpg');"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-col">
+            <h4>About Us</h4>
+            <ul>
+                <li><a href="#">Mission</a></li>
+                <li><a href="#">Vision</a></li>
+                <li><a href="#">Team</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="#">Dog Walking</a></li>
+                <li><a href="#">Pet Sitting</a></li>
+                <li><a href="#">Grooming</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contact Us</h4>
+            <ul>
+                <li><a href="#">Email</a></li>
+                <li><a href="#">Phone</a></li>
+                <li><a href="#">Address</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Follow Us</h4>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+</body>
+</html>

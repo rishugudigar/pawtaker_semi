@@ -1,0 +1,41 @@
+.key-value {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.key {
+    font-weight: bolder;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #333;
+}
+.value{
+    font-size: 11px;
+    font-style: italic;
+    color: #666;
+}
+.contact-us-form {
+    margin-top: 20px;
+  }
+  
+  .contact-us-form input,
+  .contact-us-form textarea {
+    width: 90%;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  .content-box {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom:20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}

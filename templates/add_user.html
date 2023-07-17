@@ -1,0 +1,45 @@
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name">
+    </div>
+
+    <div>
+      <label for="aadhar_number">Aadhar Number:</label>
+      <input type="text" id="aadhar_number" name="aadhar_number">
+    </div>
+
+    <div>
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="phone_number">
+      </div>
+      <div>
+        <label for="gender">Gender</label>
+        
+
+<select name="gender" id="gender">
+  <option value="M">Male</option>
+  <option value="F">Female</option>
+  <option value="O">Others</option>
+</select>
+      </div>
+      <div>
+        <label for="date_of_birth">Date of Birth</label>
+        <input type="date" id="date_of_birth" name="date_of_birth">
+      </div>
+    
+
+    
+    <div>
+      <label for="address">Address:</label>
+      <textarea id="address" name="address"></textarea>
+    </div>
+    <div>
+      <label for="description">Service Description:</label>
+      <textarea id="description" name="description"></textarea>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Success{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5 justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h1 class="mb-3">Success!</h1>
+                    <p>Your profile has been created.</p>
+                    <a href="#" class="btn btn-primary mt-3">Return Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card border-0 shadow-sm rounded-lg">
+                <div class="card-body">
+                    <h3 class="card-title">Other Profile Details</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Name:</h5>
+                                    <p class="card-text">{{ user.get_full_name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Email:</h5>
+                                    <p class="card-text">{{ user.email }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Phone:</h5>
+                                    <p class="card-text">{{ user.phone }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Address:</h5>
+                                    <p class="card-text">{{ user.address }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

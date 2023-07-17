@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="row">
+    {% for user in users %}
+    <div class="col-md-4">
+      <div class="card shadow-sm mb-4">
+        <img src="{{ user.image.url }}" class="card-img-top" alt="{{ user.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.name }}</h5>
+          <p class="card-text">{{ user.description }}</p>
+          <a href="tel:{{ user.phone }}" class="btn btn-primary">Contact Us</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

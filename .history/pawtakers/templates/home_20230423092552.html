@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="text-center mb-5">Caretaker Profiles</h1>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            {% for profile in profiles %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <img class="card-img-top" src="{{ profile.image.url }}" alt="{{ profile.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ profile.name }}</h5>
+                            <p class="card-text">{{ profile.description }}</p>
+                            <a href="tel:{{ profile.phone }}" class="btn btn-primary btn-block">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

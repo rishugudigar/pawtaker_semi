@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card-columns mt-5">
+                {% for user in users %}
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body text-center">
+                        <img src="{{ user.image.url }}" alt="{{ user.name }}" class="rounded-circle mb-3" width="150" height="150">
+                        <h5 class="card-title">{{ user.name }}</h5>
+                        <p class="card-text">{{ user.description }}</p>
+                        <p class="card-text"><strong>Contact:</strong> {{ user.phone }}</p>
+                        <a href="#" class="btn btn-primary">Contact us</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

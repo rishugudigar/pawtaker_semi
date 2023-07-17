@@ -1,0 +1,536 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+
+{% block content %}
+{% load static %}
+
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .profile {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .image-container {
+        flex: 0 0 200px;
+    }
+
+    .image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .profile-details {
+        flex-grow: 1;
+    }
+
+    .name {
+        font-weight: bold;
+    }
+
+    .address {
+        margin-top: 5px;
+    }
+
+    .description {
+        margin-top: 10px;
+    }
+
+    .call-button {
+        margin-top: 10px;
+    }
+
+    .container:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add box shadow effect on hover */
+        background-image: url('{% static "r_bg.jpg" %}');
+        /* Add background image on hover */
+        background-repeat: repeat; /* Set the background image to repeat */
+        background-size: auto; /* Reset the background image size */
+        background-position: fixed; /* Reset the background image position */
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    body {
+        line-height: 1.5;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+        max-width: 1170px;
+        margin: auto;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .nav-bar{
+        width: 100%;
+    }
+    
+    
+    .navbar{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding-top:20px;
+        padding-left: 10%;
+        padding-right:10%;
+        background-color: rgba(0,0,0,0.8);
+        height: 8vh;
+        
+    
+    }
+    
+    .navbar ul li{
+        list-style-type: none;
+        display: inline-block;
+        padding: 10px 20px;
+    }
+    
+    .navbar ul li a{
+        text-decoration: none;
+        font-weight: 500;
+        color:yellow;
+        font-family: 'Roboto', sans-serif;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+            
+    }
+    
+    .navbar ul li a:hover{
+        color: white;
+        transition: .4s;
+        font-size: medium;
+        font-weight: 500;
+    }
+    .container_view{
+        max-width: 1170px;
+        margin:auto;
+    }
+    .row{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    ul{
+        list-style: none;
+    }
+    .footer{
+        background-color: #24262b;
+        padding: 70px 0;
+    }
+    .footer-col{
+        width: 25%;
+        padding: 0 15px;
+    }
+    .footer-col h4{
+        font-size: 18px;
+        color: #ffffff;
+        text-transform: capitalize;
+        margin-bottom: 35px;
+        font-weight: 500;
+        position: relative;
+    }
+    .footer-col h4::before{
+        content: '';
+        position: absolute;
+        left:0;
+        bottom: -10px;
+        background-color: #e91e63;
+        height: 2px;
+        box-sizing: border-box;
+        width: 50px;
+    }
+    .footer-col ul li:not(:last-child){
+        margin-bottom: 10px;
+    }
+    .footer-col ul li a{
+        font-size: 16px;
+        text-transform: capitalize;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 300;
+        color: #bbbbbb;
+        display: block;
+        transition: all 0.3s ease;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .footer-col ul li a:hover{
+        color: #ffffff;
+        padding-left: 8px;
+    }
+    .footer-col .social-links a{
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        background-color: rgba(255,255,255,0.2);
+        margin:0 10px 10px 0;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 50%;
+        color: #ffffff;
+        transition: all 0.5s ease;
+    }
+    .footer-col .social-links a:hover{
+        color: #24262b;
+        background-color: #ffffff;
+        align-item:center;
+        margin:auto;
+    }
+
+    .form_city {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url('{% static "filter_background.jpg" %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+    }
+    
+    .city_form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.4);
+        padding: 20px;
+    }
+    
+    .city_form label {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .city_form select {
+        width: 200px;
+        height: 30px;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .city_form button {
+        width: 150px;
+        height: 40px;
+        font-size: 16px;
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .city_form button:hover {
+        background-color: darkgreen;
+    }
+    
+</style>
+<style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+        
+        margin: 0; /* Add this to remove body default margin */
+    }
+    nav {
+        position: fixed; /* Change position to fixed */
+        top: 0; /* Position it at the top */
+        left: 0; /* Align it to the left */
+        width: 100%; /* Make it full width */
+        height: 50px;
+        background: #34495e;
+        border-radius: 1px;
+        font-size: 0;
+        box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
+        z-index: 100; /* Add a higher z-index to keep it above other elements */
+    }
+
+    /* Rest of the CSS styles remain the same */
+    nav a {
+        font-size: 15px;
+        text-transform: uppercase;
+        color: white;
+        text-decoration: none;
+        line-height: 50px;
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        text-align: center;
+    }
+    nav .animation {
+        position: absolute;
+        height: 5px;
+        bottom: 0;
+        z-index: 0;
+        background: yellow;
+        transition: all .5s ease 0s;
+        border-radius: 8px;
+    }
+    a:nth-child(1) {
+        width: 100px;
+    }
+    nav .start-home,a:nth-child(1):hover~.animation {
+        width: 100px;
+        left: 0;
+    }
+    a:nth-child(2) {
+        width: 110px;
+    }
+    nav .start-about,a:nth-child(2):hover~.animation {
+        width: 110px;
+        left: 100px;
+    }
+    a:nth-child(3) {
+        width: 100px;
+    }
+    nav .start-login,a:nth-child(3):hover~.animation {
+        width: 100px;
+        left: 210px;
+    }
+    a:nth-child(4) {
+        width: 100px;
+    }
+    nav .start-signup,a:nth-child(4):hover~.animation {
+        width: 100px;
+        left: 310px;
+    }
+    a:nth-child(5) {
+        width: 100px;
+    }
+    nav .start-signup,a:nth-child(5):hover~.animation {
+        width: 100px;
+        left: 410px;
+    }
+
+   .blog-slider {
+    max-width: 1000px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+    padding: 25px;
+    border-radius: 25px;
+    height:
+  }
+  
+  .blog-slider__item {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .blog-slider__img {
+    width: 300px;
+    flex-shrink: 0;
+    height: 200px;
+    background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
+    box-shadow: 4px 13px 30px 1px rgba(252, 56, 56, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .blog-slider__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  
+  .blog-slider__content {
+    padding-left: 20px;
+  }
+  
+  .blog-slider__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0d0925;
+    margin-bottom: 10px;
+  }
+  
+  .blog-slider__location {
+    display: flex;
+    align-items: center;
+    color: #7b7992;
+    margin-bottom: 15px;
+  }
+  
+  .blog-slider__location i {
+    margin-right: 5px;
+  }
+  
+  .blog-slider__text {
+    color: #4e4a67;
+    margin-bottom: 30px;
+    line-height: 1.5em;
+  }
+  
+  .blog-slider__button {
+    display: inline-flex;
+    background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
+    padding: 15px 35px;
+    border-radius: 50px;
+    color: #fff;
+    box-shadow: 0px 14px 80px rgba(252, 56, 56, 0.4);
+    text-decoration: none;
+    font-weight: 500;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  
+  /* Hover Effect */
+  .blog-slider__item:hover .blog-slider__img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .blog-slider__item:hover .blog-slider__content {
+    transform: translateY(-10px);
+    transition: transform 0.3s ease;
+  }
+  
+    
+</style>
+</head>
+<body>
+    <nav>
+        <a href="/display">Home</a>
+            <a href="/">About Us</a>
+            <a href="{% url 'account_login'%}">Login</a>
+            <a href="{% url 'account_signup' %}">SignUp</a>
+            {% comment %} <a href="{% url 'profile-edit' profile.pk %}">Edit Profile</a> {% endcomment %}
+            <a href="{% url 'account_logout'%}"> Sign Out</a>
+            {% if user.is_authenticated %}
+    {% comment %} <a href="{% url 'caretaker:service-price-edit' pk=user.profile.pk %}">CHANGE SERVICE PRICES</a> {% endcomment %}
+{% endif %}
+{% if user.is_authenticated %}
+    <a href="{% url 'caretaker:profile' user.profile.pk %}" style="margin-left: 10px;">Welcome, {{ user.username }}! View Profile</a>
+{% endif %}
+
+
+
+        <div class="animation start-home"></div>
+    </nav>
+<!-- Add other content below the navbar if necessary -->
+</body>
+<div class=form_city>
+<form method="GET" action="" class="city_form">
+    <div class="inner_form">
+    <label for="city">Filter by City:</label>
+    <select id="city" name="city">
+        <option value="">All</option>
+        {% for city in cities %}
+            <option value="{{ city }}" {% if selected_city == city %}selected{% endif %}>{{ city }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Filter</button>
+    </div>
+</form>
+<form method="GET" action="" class="city_form">
+    <div class="inner_form">
+    <select name="name">
+        <option value="">-- Select a profile name --</option>
+        {% for name in names %}
+            <option value="{{ name }}">{{ name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Search</button>
+</div>
+</form>
+</div>
+
+<br>
+<br>
+    {% for profile in profiles %}
+    <div class="container">
+    <div class="profile">
+        <div class="image-container">
+            <img src="{{ profile.image.url }}" alt="Person Image" class="image">
+        </div>
+        <div class="profile-details">
+            <div class="name">{{ profile.name }}</div>
+            <div class="address">{{ profile.city }},{{ profile.state }}</div>
+            <div class="description">
+                <p>Service Description:</p>
+                <p>{{ profile.description }}</p>
+            </div>
+            <div><p>Viewed by {{ profile.view_counter }}</p>
+            </div>
+            <button class="call-button" onclick="callPerson('+91 8848699797')">
+                <i class="fas fa-phone"></i>Call
+            </button>
+            <button class="call-button">
+            <a href="{% url 'caretaker:profile' profile.pk %}" class="stretched-link">View More </a>
+            </button>
+            
+        </div>
+    </div>
+</div>
+<br>
+<br>
+    {% endfor %}
+    <div class="blog-slider">
+        <div class="blog-slider__item">
+          <div class="blog-slider__img">
+            <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759872/kuldar-kalvik-799168-unsplash.webp" alt="">
+          </div>
+          <div class="blog-slider__content">
+            <div class="blog-slider__title">Lorem Ipsum Dolor</div>
+            <div class="blog-slider__location">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Location</span>
+            </div>
+            <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?</div>
+            <a href="#" class="blog-slider__button">READ MORE</a>
+          </div>
+        </div>
+      </div>
+      
+
+    
+    <footer class="footer">
+        <div class="container_view">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">affiliate program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+{% endblock %}

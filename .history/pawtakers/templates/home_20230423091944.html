@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">My Website</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container my-5">
+  <h2 class="text-center mb-5">User Profiles</h2>
+  <div class="card-deck">
+    {% for profile in profiles %}
+    <div class="card mb-4">
+      <img class="card-img-top" src="{{ profile.image.url }}" alt="{{ profile.name }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ profile.name }}</h5>
+        <p class="card-text">{{ profile.description }}</p>
+        <p class="card-text"><strong>Contact:</strong> {{ profile.phone }}</p>
+        <a href="#" class="btn btn-primary">Contact Us</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<footer class="bg-dark text-white py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p>&copy; 2023 My Website</p>
+      </div>
+      <div class="col-md-6 text-right">
+        <p>Contact Us: info@mywebsite.com</p>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}

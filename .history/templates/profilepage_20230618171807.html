@@ -1,0 +1,316 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:'Rubik',sans-serif;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-self:center ;
+            min-height: 100vh;
+            background:  #808080;
+        }
+        .container{
+            position:relative;
+            max-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+            grid-template-rows:minmax(100px,auto);
+            margin:40px;
+            grid-auto-flow: dense;
+            grid-gap: 10px;
+        }
+        .container .box{
+            background:#f5f5f5;
+            padding: 20px;
+            display: grid;
+            font-size: 20px;
+            place-items: center;
+            text-align: center;
+            color:#000;
+            transition: 0.5s;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        .container .box:hover{
+            background: #fea004;
+        }
+
+        .container .box img{
+            position:relative;
+            max-width:500px;
+            margin-bottom:10px;
+
+
+        }
+
+        .container .box:nth-child(1)
+        {
+            grid-column:span 2;
+            grid-row: span 1 ;
+        
+        }
+
+        
+        .container .box:nth-child(2)
+        {
+            grid-column:span 1;
+            grid-row: span 2;
+        
+        }
+
+        .container .box:nth-child(4)
+        {
+            grid-column:span 1;
+            grid-row: span 2;
+        
+        }
+
+        .container .box:nth-child(5)
+        {
+            grid-column:span 3;
+            grid-row: span 1;
+        
+        }
+        
+    @media(max-width: 991px)
+    {
+        .container{
+            
+            grid-template-columns: repeat(auto-fill, minmax(50%,1fr));
+            grid-template-rows: minmax(auto, auto);
+        }
+
+        .container .box{
+            grid-column:  unset !important;
+            grid-row: 
+            unset !important;
+        }
+    }
+    body {
+        font-family: 'Open Sans', sans-serif;
+        
+        margin: 0; /* Add this to remove body default margin */
+    }
+    nav {
+        position: fixed; /* Change position to fixed */
+        top: 0; /* Position it at the top */
+        left: 0; /* Align it to the left */
+        width: 100%; /* Make it full width */
+        height: 50px;
+        background: #34495e;
+        border-radius: 1px;
+        font-size: 0;
+        box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
+        z-index: 100; /* Add a higher z-index to keep it above other elements */
+    }
+
+    /* Rest of the CSS styles remain the same */
+    nav a {
+        font-size: 15px;
+        text-transform: uppercase;
+        color: white;
+        text-decoration: none;
+        line-height: 50px;
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        text-align: center;
+    }
+    nav .animation {
+        position: absolute;
+        height: 5px;
+        bottom: 0;
+        z-index: 0;
+        background: yellow;
+        transition: all .5s ease 0s;
+        border-radius: 8px;
+    }
+    a:nth-child(1) {
+        width: 100px;
+    }
+    nav .start-home,a:nth-child(1):hover~.animation {
+        width: 100px;
+        left: 0;
+    }
+    a:nth-child(2) {
+        width: 110px;
+    }
+    nav .start-about,a:nth-child(2):hover~.animation {
+        width: 110px;
+        left: 100px;
+    }
+    a:nth-child(3) {
+        width: 100px;
+    }
+    nav .start-login,a:nth-child(3):hover~.animation {
+        width: 100px;
+        left: 210px;
+    }
+    a:nth-child(4) {
+        width: 100px;
+    }
+    nav .start-signup,a:nth-child(4):hover~.animation {
+        width: 160px;
+        left: 250px;
+    }
+    a:nth-child(5) {
+        width: 100px;
+    }
+    nav .start-signup,a:nth-child(5):hover~.animation {
+        width: 160px;
+        left: auto;
+        right:0px;
+    }
+
+    h3{
+        font-weight:300;
+    }
+
+    h5{
+        font-weight:200;
+    }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-VRRNWyOP0SZCGkUFsm9Uf7PvF9ERBzv6JeMQ4oIhl2e9J7e3aOuf7Qf3RQt6AzomTsbqyj0F7I3NzcewDfSaxw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    </head>
+    
+
+<body>
+    <nav>
+        <a href="/display">Home</a>
+        <a href="/">About Us</a>
+        <a href="{% url 'account_login'%}">Login</a>
+        <a href="{% url 'account_signup' %}">SignUp</a>
+        <a href="{% url 'caretaker:profile-edit' profile.pk %}">Edit Profile</a>
+        {% if user.is_authenticated %}
+    <a href="{% url 'caretaker:service-price-edit' pk=user.profile.pk %}">Change Service Prices</a>
+{% endif %}
+
+        <div class="animation start-home"></div>
+        
+    </nav>
+    <br>
+    <br>
+
+    <body>
+        <br>
+    <br><br>
+    <br>
+        {% block content %}
+        <div class="container">
+            <div class="box">
+                <div class="content">
+                    {% if profile.name %}
+                        <h1 class="py-4">{{ profile.name }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="box" style="display: inline-block; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s;">
+                <div class="content" style="padding: 20px; background-color: #f9f9f9; border-radius: 10px;">
+                    <h3 style="font-size: 24px; color: #333; margin-bottom: 10px; font-family: 'Arial', sans-serif;"><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Address</h3>
+                    <p style="font-size: 18px; color: #666; margin-bottom: 5px; font-family: 'Arial', sans-serif;"><i class="fas fa-home" style="margin-right: 10px;"></i> {{ profile.first_line }}</p>
+                    <p style="font-size: 18px; color: #666; margin-bottom: 5px; font-family: 'Arial', sans-serif;"><i class="fas fa-map-pin" style="margin-right: 10px;"></i> {{ profile.second_line }}</p>
+                </div>
+            </div>
+            
+            
+            <div class="box">
+                <div class="content">
+                    
+                </div>
+            </div>
+            <div class="box" style="display: inline-block; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s;">
+                <div class="content" style="padding: 20px; background-color: #f9f9f9; border-radius: 10px;">
+                    {% if profile.services_description.all %}
+    <h3 style="font-size: 24px; color: #333; margin-bottom: 10px; font-family: 'Arial', sans-serif;">Services Description:</h3>
+    {% if service_descriptions %}
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for service_description in service_descriptions %}
+                <tr>
+                    <td>{{ service_description.service.name }}</td>
+                    <td>
+                        {% if service_description.price %}
+                            ${{ service_description.price }}
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">No service descriptions available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No service descriptions available.</p>
+{% endif %}
+
+{% endif %}
+
+                </div>
+            </div>
+            
+            <div class="box" style="display: inline-block; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s;">
+                <div class="content" style="padding: 20px; background-color: #f9f9f9; border-radius: 10px;">
+                    {% if profile.description %}
+                    <h3 style="font-size: 24px; color: #333; margin-bottom: 10px; font-family: 'Arial', sans-serif;">Description</h3>
+                    <p style="font-size: 16px; color: #666; margin-bottom: 0; font-family: 'Arial', sans-serif;">{{ profile.description }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="box">
+                <div class="content">
+                    {% if profile.image %}
+                    <img class="card-img-top" src="{{ profile.image.url }}" alt="{{ profile.name }}" style="width: 100%; height: 100%; object-fit: cover;">
+                    {% endif %}
+                </div>
+            </div>
+            
+
+            <div class="box" style="display: inline-block; margin: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); transition: box-shadow 0.3s;">
+                <div class="content" style="padding: 20px; background-color: #f9f9f9; border-radius: 10px; text-align: center;">
+                    <h3 style="font-size: 20px; color: #333; margin-bottom: 10px; font-family: 'Arial', sans-serif; font-weight: bold;">Contact Us</h3>
+                    
+                    {% if profile.phone_number %}
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                        <i class="fas fa-phone" style="font-size: 18px; color: #666; margin-right: 5px;"></i>
+                        <p style="font-size: 16px; color: #333; margin-bottom: 0; font-family: 'Arial', sans-serif;">Phone Number:</p>
+                        <p style="font-size: 16px; color: #666; margin-bottom: 0; margin-left: 5px; font-family: 'Arial', sans-serif;">{{ profile.phone_number }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% if profile.backup_phonenumber %}
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-phone" style="font-size: 18px; color: #666; margin-right: 5px;"></i>
+                        <p style="font-size: 16px; color: #333; margin-bottom: 0; font-family: 'Arial', sans-serif;">Backup Phone Number:</p>
+                        <p style="font-size: 16px; color: #666; margin-bottom: 0; margin-left: 5px; font-family: 'Arial', sans-serif;">{{ profile.backup_phonenumber }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            
+            
+        {% endblock content %}
+    </body>
+</html>

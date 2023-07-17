@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-3 col-sm-6">
+                    
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt5">
+        <div class="card shadow-sm col-md-8 col-sm-12 border-bottom px-5 pt-3">
+            {% if profile.name %}
+            
+            <h3 class="py-4">{{ profile.name }}
+            {% endif %}
+
+            {% if profile.image %}
+            <img class="card-img-top" src="{{ profile.image.url }}" alt="{{ profile.name }}">
+            {% endif %}
+
+            {% if profile.description %}
+            <h3>Description</h3>
+            <h5 class="py-4">{{ profile.description}}
+            {% endif %}
+
+            {% if profile.address%}
+            <h3>Address:</h3>
+            <h5 class="py-4">{{ profile.address }}
+            {% endif %}
+
+            {% if profile.phone_number %}
+            <h3>Phone Number:</h3>
+            <h5 class="py-4">{{ profile.phone_number }}
+            {% endif %}
+            {% if profile.backup_phonenumber %}
+            <h5 class="py-4">{{ profile.backup_phonenumber }}
+            {% endif %}
+            {% if profile.services_description %}
+            <h3>Services Description:</h3>
+            <h5 class="py-4">{{ profile.services_description }}
+            {% endif %}
+            
+{% endblock content %}

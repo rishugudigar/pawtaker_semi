@@ -1,0 +1,124 @@
+
+{% load crispy_forms_tags %}
+
+
+{%block content%}
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            height: 200vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container {
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap; /* Added flex-wrap property */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            
+        }
+        
+        .form-image {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-image img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .form-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .form-content h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-content label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-content input,
+        .form-content textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-content .form-row {
+            display: flex;
+            justify-content: space-between; /* Added justify-content property */
+        }
+
+        .form-content .form-row .form-field {
+            width: calc(32% - 10px); /* Adjusted width */
+        }
+
+        .form-content button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+    <nav>
+        <a href="/display">Home</a>
+        <a href="/">About Us</a>
+        <a href="{% url 'account_login'%}">Login</a>
+        <a href="{% url 'account_signup' %}">SignUp</a>
+        <a href="{% url 'caretaker:profile' profile.pk %}">Edit Profile</a>
+        <div class="animation start-home"></div>
+    </nav>
+<div class="container">
+    <div class="form-container">
+        <div class="form-image">
+            {% load static %}
+            <img src="{% static './dog.jpg' %}" alt="Image">
+        </div>
+        <div class="form-content">
+            <h2 style="font-size: 30px; font-family: 'Comic Sans MS', cursive; color: #333; text-align: center; margin-bottom: 30px;">
+                We're <span style="color: #4CAF50;">thrilled</span> to <span style="color: #4CAF50;">embark</span> on the journey of pet care together!</h2>
+                <form method="POST" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    {{form}}
+                    <div class="d-grip gap-2">
+                    <button class="btn btn-success mt-3">Submit</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+{% endblock content%}

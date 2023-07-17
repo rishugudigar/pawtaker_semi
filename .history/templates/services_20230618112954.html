@@ -1,0 +1,8 @@
+<form method="post">
+    {% csrf_token %}
+    {% for form in forms %}
+        {{ form.as_p }}
+    {% endfor %}
+    <button type="submit">Submit</button>
+  </form>
+<h1>Hello</h1>
