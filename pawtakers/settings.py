@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-b(6(9-#)%&7hp=a%34xuq1wfhwhoid$)tn%oul4=k$-ft-1l_)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [pawtaker-semi.onrender.com]
+ALLOWED_HOSTS = ['pawtaker-semi.onrender.com']
 
 
 # Application definition
